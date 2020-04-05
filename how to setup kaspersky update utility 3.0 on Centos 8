@@ -48,7 +48,7 @@ $ nano kavupdater.conf
 
 <VirtualHost kuusrv.your_domain.local:80>
 ServerAdmin admin@your_domain.local
-ServerName nabu.your_domain.local
+ServerName kuusrv.your_domain.local
 DocumentRoot /var/www/html/kavupdater
 <Directory /var/www/html/kavupdater>
 Options All Indexes FollowSymLinks
@@ -199,10 +199,4 @@ $ crontab -e
 
 # add line below - updates will be downloaded every 2 hours
 0 */2 * * * /home/kladmin/kavupdater.sh
-
-
-
-
-
-
 
