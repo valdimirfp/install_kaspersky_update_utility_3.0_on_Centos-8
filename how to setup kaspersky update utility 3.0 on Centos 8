@@ -44,16 +44,16 @@ $ cd /etc/httpd/sites-available
 # create and modify file
 $ nano kavupdater.conf
 
-<VirtualHost nabu.efbank.local:80>
-        ServerAdmin jabba@efbank.local
-        ServerName nabu.efbank.local
+<VirtualHost SRV.domain.local:80>
+        ServerAdmin user@SRV.domain
+        ServerName SRV.domain.local
         DocumentRoot /var/www/html/kavupdater
  <Directory "/var/www/html/kavupdater">
         Options All Indexes FollowSymLinks
         Require all granted
  </Directory>
-        ErrorLog /var/log/kavupdater.efbank.ru-error_log
-        CustomLog /var/log/kavupdater.efbank.ru_log combined
+        ErrorLog /var/log/SRV.domain..ru-error_log
+        CustomLog /var/log/SRV.domain..ru_log combined
 </VirtualHost>
 
 
