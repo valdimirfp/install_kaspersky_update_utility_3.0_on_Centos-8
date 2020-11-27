@@ -14,9 +14,7 @@ $ systemctl restart sshd
 dnf install httpd
 
 # run and add to startup
-systemctl enable httpd
-systemctl start httpd
-
+systemctl enable httpd && systemctl start httpd
 
 # create folders
 
@@ -32,7 +30,7 @@ $ mkdir -p /var/www/html/log
 # kladmin - user for updates
 $ adduser kladmin
 
-$ chown -R kladmin /var/www/html/kavupdater
+$ chown -R kladmin:apache /var/www/html/kavupdater
 
 $ chmod -R 755 /var/www
 
@@ -46,23 +44,24 @@ $ cd /etc/httpd/sites-available
 # create and modify file
 $ nano kavupdater.conf
 
-<VirtualHost kuusrv.your_domain.local:80>
-ServerAdmin admin@your_domain.local
-ServerName kuusrv.your_domain.local
-DocumentRoot /var/www/html/kavupdater
-<Directory /var/www/html/kavupdater>
-Options All Indexes FollowSymLinks
-Require all granted
-</Directory>
-ErrorLog logs/kuusrv.your_domain.local-error_log
-CustomLog logs/kuusrv.your_domain.local-access_log combined
+<VirtualHost nabu.efbank.local:80>
+        ServerAdmin jabba@efbank.local
+        ServerName nabu.efbank.local
+        DocumentRoot /var/www/html/kavupdater
+ <Directory "/var/www/html/kavupdater">
+        Options All Indexes FollowSymLinks
+        Require all granted
+ </Directory>
+        ErrorLog /var/log/kavupdater.efbank.ru-error_log
+        CustomLog /var/log/kavupdater.efbank.ru_log combined
 </VirtualHost>
+
 
 # create a symbolic link for virtual host
 $ ln -s /etc/httpd/sites-available/kavupdater.conf /etc/httpd/sites-enabled/kavupdater.conf
 
 # delete default startup page
-$ rm /etc/httpd
+$ rm /etc/httpd/welkome.conf
 
 # restart apache
 $ systemctl restart httpd
@@ -72,6 +71,8 @@ http://your_server_IP/
 
 
 $ reboot
+
+######################################################################################################
 
 # there is one bug in this setup that I didn’t fix
 # after rebooting the system, the default directory becomes /var/www/html/ - I don’t know why
@@ -86,7 +87,7 @@ systemctl restart httpd
 
 # save and make executable
 
-$cmod u+x /usr/bin/apachereload.sh
+$ chmod u+x /usr/bin/apachereload.sh
 
 # another file
 
@@ -119,6 +120,7 @@ $ systemctl enable apachereload.service
 
 # you can reboot and make sure that the apach service restarts and we get to the correct directory
 
+######################################################################################################
 
 # Setup kaspersky update utility
 
@@ -199,4 +201,3 @@ $ crontab -e
 
 # add line below - updates will be downloaded every 2 hours
 0 */2 * * * /home/kladmin/kavupdater.sh
-
