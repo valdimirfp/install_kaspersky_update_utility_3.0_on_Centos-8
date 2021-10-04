@@ -138,9 +138,32 @@ nano updater.ini
 
 
 [ComponentSettings]
-# add below
-KasperskyEndpointSecurityForWinWKS_11=true
-KasperskyEndpointSecurityForWinWKS_11_256=true
+# add below new versions
+# to know new version run Windows https://support.kaspersky.ru/updater3 -> check versions -> chek updater.ini file 
+ApplicationsOs=1
+KasperskyAntiVirus_13_0=false
+KasperskyAntiVirus_14_0=false
+KasperskyAntiVirus_15_0=false
+KasperskyAntiVirus_16_0=false
+KasperskyAntiVirus_16_0_1=false
+KasperskyInternetSecurrity_13_0=false
+KasperskyInternetSecurrity_14_0=false
+KasperskyInternetSecurrity_15_0=false
+KasperskyInternetSecurrity_16_0=false
+KasperskyInternetSecurrity_16_0_1=false
+KasperskyPure_12_0_1_288=false
+KasperskyPure_3_0=false
+KasperskyTotalSecurity_15=false
+Kaspersky_Security_13_0_2_458=false
+Kaspersky_Security_14_0_0_177=false
+Kaspersky_Security_15_0_0_226=false
+KasperskyRescueDisk_10_0_29_6=false
+KasperskyRescueDisk_10_0_31_4=false
+KasperskyEndpointSecurityForWinWKS_8=false
+KasperskyEndpointSecurityForWinWKS_10=false
+KasperskyEndpointSecurityForWinWKS_10_SP1=false
+KasperskyEndpointSecurityForMacOSX_8=false
+KasperskyEndpointSecurityForLinux_8=false
 
 [DirectoriesSettings]
 ClearTempFolder=true
